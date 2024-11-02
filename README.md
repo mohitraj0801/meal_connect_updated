@@ -142,12 +142,12 @@ MealConnect facilitates the efficient distribution of surplus food from restaura
 - Regular security audits
 
 ## Team Members
-1.Anish Rimil Barla (Lead) - Backend
-2.Mohit Raj - Frontend
-3.Ayansh Singh - Frontend
-4.Akash Verma - Backend
-5.Tarkeshwar Uraun- Backend
-6.Rishav Kindo - UI/UX Design
+- 1.Anish Rimil Barla (Lead) - Backend
+- 2.Mohit Raj - Frontend
+- 3.Ayansh Singh - Frontend
+- 4.Akash Verma - Backend
+- 5.Tarkeshwar Uraun- Backend
+- 6.Rishav Kindo - UI/UX Design
 
 ## 📄 License
 
