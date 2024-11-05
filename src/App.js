@@ -1,12 +1,29 @@
+// App.js
 import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import { ShoppingCart, Bell, User, Leaf } from 'lucide-react';
 import './index.css';
 import './App.css';
+import RegistrationPage from './components/RegistrationPage';
 
-const App = () => {
+const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
+  const navigate = useNavigate();
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    // Mock login credentials
+    const mockEmail = 'user@gmail.com';
+    const mockPassword = 'password';
+
+    if (email === mockEmail && password === mockPassword) {
+      navigate('/register'); // Redirect to RegistrationPage on successful login
+    } else {
+      alert('Invalid credentials. Please try again.');
+    }
+  };
 
   return (
     <div className="min-h-screen bg-white">
@@ -94,7 +111,7 @@ const App = () => {
               </h2>
             </div>
 
-            <form className="space-y-6">
+            <form onSubmit={handleLogin} className="space-y-6">
               <div>
                 <input
                   type="email"
@@ -147,4 +164,16 @@ const App = () => {
   );
 };
 
-export default App;
+// MainApp component to handle routing
+const MainApp = () => {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<LoginPage />} />
+        <Route path="/register" element={<RegistrationPage />} />
+      </Routes>
+    </Router>
+  );
+};
+
+export default MainApp;

@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const RestaurantDashboard = () => {
+const RestaurantDetails = () => {
   const [surplusFood, setSurplusFood] = useState([]);
   const [newItem, setNewItem] = useState({ item: '', quantity: 0, expiryDate: '' });
 
@@ -46,4 +46,4 @@ const RestaurantDashboard = () => {
   );
 };
 
-export default RestaurantDashboard;
+export default RestaurantDetails;

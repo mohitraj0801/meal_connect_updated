@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const FoodBankDashboard = () => {
+const FoodBankDetails = () => {
   const [availableDonations, setAvailableDonations] = useState([]);
   const [donationHistory, setDonationHistory] = useState([]);
 
@@ -53,4 +53,4 @@ const FoodBankDashboard = () => {
   );
 };
 
-export default FoodBankDashboard;
+export default FoodBankDetails;
