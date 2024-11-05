@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ShoppingCart, Bell, User } from 'lucide-react';
+import { ShoppingCart, Bell, User, Leaf } from 'lucide-react';
 import './index.css';
 import './App.css';
 
@@ -15,10 +15,13 @@ const App = () => {
         <div className="max-w-6xl mx-auto px-4 py-3">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-8">
-              <span className="text-xl font-bold">
-                <span>Meal</span>
-                <span className="text-green-500">Connect</span>
-              </span>
+              <div className="flex items-center">
+                <Leaf className="w-5 h-5 text-green-500" />
+                <span className="text-xl font-bold ml-1">
+                  <span>Meal</span>
+                  <span className="text-green-500">Connect</span>
+                </span>
+              </div>
               <div className="flex space-x-6">
                 <a href="#" className="hover:text-gray-600">Home</a>
                 <a href="#" className="hover:text-gray-600">Delivery</a>
@@ -27,7 +30,7 @@ const App = () => {
               </div>
             </div>
             <div className="flex items-center space-x-6">
-              <div className="flex items-center">
+              <div className="flex items-center text-green-500">
                 <ShoppingCart className="w-5 h-5" />
                 <span className="ml-2">Your Cart (0)</span>
               </div>
@@ -53,37 +56,38 @@ const App = () => {
         </div>
 
         {/* Content Grid */}
-        <div className="grid md:grid-cols-2 gap-8 bg-blue-50 rounded-lg p-8">
+        <div className="grid md:grid-cols-2 gap-8 bg-blue-50 rounded-3xl p-8">
           {/* Left Side - Images */}
-          <div className="space-y-4">
-            <div className="grid grid-cols-2 gap-4">
-              <div className="bg-white p-4 rounded-lg shadow-sm">
+          <div className="relative">
+            <div className="grid grid-cols-2 gap-4 mb-4">
+              <div className="rounded-3xl overflow-hidden">
                 <img
-                  src="/images/volunteersImage.jpg" // Use the correct path to your image
+                  src="/images/volunteersImage.jpg"
                   alt="Volunteers packing food"
-                  className="w-full h-full object-cover rounded"
+                  className="w-full h-full object-cover"
                 />
               </div>
-              <div className="bg-white p-4 rounded-lg shadow-sm">
+              <div className="rounded-3xl overflow-hidden">
                 <img
-                  src="/images/Donations.jpg" // Use the correct path to your image
+                  src="/images/Donations.jpg"
                   alt="Donations"
-                  className="w-full h-full object-cover rounded"
+                  className="w-full h-full object-cover"
                 />
               </div>
             </div>
-            <div className="bg-white p-4 rounded-lg shadow-sm">
+            <div className="rounded-3xl overflow-hidden">
               <img
-                src="/images/FoodDonation.jpg" // Use the correct path to your image
+                src="/images/FoodDonation.jpg"
                 alt="Food distribution"
-                className="w-full h-full object-cover rounded"
+                className="w-full h-full object-cover"
               />
             </div>
           </div>
 
           {/* Right Side - Login Form */}
-          <div className="bg-white p-8 rounded-lg shadow-lg">
-            <div className="mb-8">
+          <div className="bg-white p-8 rounded-3xl shadow-lg">
+            <div className="mb-8 flex items-center">
+              <Leaf className="w-5 h-5 text-green-500 mr-1" />
               <h2 className="text-2xl font-bold">
                 <span>Meal</span>
                 <span className="text-green-500">Connect</span>
@@ -97,7 +101,7 @@ const App = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Type your email here..."
-                  className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-4 py-3 border rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
               </div>
               <div>
@@ -106,7 +110,7 @@ const App = () => {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="Type your password here..."
-                  className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-4 py-3 border rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
               </div>
               <div className="flex items-center justify-between">
@@ -125,7 +129,7 @@ const App = () => {
               </div>
               <button
                 type="submit"
-                className="w-full bg-blue-900 text-white py-3 rounded-lg hover:bg-blue-800 transition-colors"
+                className="w-full bg-blue-900 text-white py-3 rounded-full hover:bg-blue-800 transition-colors"
               >
                 Login
               </button>
