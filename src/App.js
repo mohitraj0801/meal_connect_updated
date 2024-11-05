@@ -14,12 +14,12 @@ const LoginPage = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    // Mock login credentials
+    
     const mockEmail = 'user@gmail.com';
     const mockPassword = 'password';
 
     if (email === mockEmail && password === mockPassword) {
-      navigate('/register'); // Redirect to RegistrationPage on successful login
+      navigate('/register'); 
     } else {
       alert('Invalid credentials. Please try again.');
     }
@@ -58,9 +58,9 @@ const LoginPage = () => {
         </div>
       </nav>
 
-      {/* Main Content */}
+      
       <div className="max-w-6xl mx-auto px-4 py-12">
-        {/* Tagline */}
+        
         <div className="text-center mb-12">
           <h1 className="text-4xl font-medium leading-relaxed">
             <span className="text-blue-900">"Delicious Meals</span>
@@ -72,9 +72,9 @@ const LoginPage = () => {
           </h1>
         </div>
 
-        {/* Content Grid */}
+        
         <div className="grid md:grid-cols-2 gap-8 bg-blue-50 rounded-3xl p-8">
-          {/* Left Side - Images */}
+          
           <div className="relative">
             <div className="grid grid-cols-2 gap-4 mb-4">
               <div className="rounded-3xl overflow-hidden">
@@ -101,7 +101,7 @@ const LoginPage = () => {
             </div>
           </div>
 
-          {/* Right Side - Login Form */}
+          
           <div className="bg-white p-8 rounded-3xl shadow-lg">
             <div className="mb-8 flex items-center">
               <Leaf className="w-5 h-5 text-green-500 mr-1" />
@@ -164,7 +164,7 @@ const LoginPage = () => {
   );
 };
 
-// MainApp component to handle routing
+
 const MainApp = () => {
   return (
     <Router>

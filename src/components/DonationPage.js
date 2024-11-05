@@ -2,7 +2,7 @@ import React from 'react';
 
 const DonationPage = () => {
   const handleDonation = () => {
-    // Handle the donation process
+    
     console.log('Donation initiated');
   };
 
