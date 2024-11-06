@@ -1,22 +1,65 @@
 import React, { useState } from 'react';
 import { Leaf } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const RegistrationPage = () => {
+  const navigate = useNavigate();
   const [userType, setUserType] = useState('restaurant');
   const [name, setName] = useState('');
   const [address, setAddress] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+
+  // Mock credentials
+  const mockCredentials = {
+    restaurant: {
+      name: 'restaurant',
+      email: 'restaurant@gmail.com',
+      password: 'password'
+    },
+    foodBank: {
+      name: 'foodbank',
+      email: 'foodbank@gmail.com',
+      password: 'password'
+    }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
-    console.log('Registering user:', { userType, name, address, email, password });
+    setError('');
+
+    // Basic validation
+    if (!name || !email || !password || !address) {
+      setError('Please fill in all fields');
+      return;
+    }
+
+    // Mock authentication logic
+    if (userType === 'restaurant') {
+      if (email === mockCredentials.restaurant.email && 
+          password === mockCredentials.restaurant.password) {
+        navigate('/restaurant-form', { 
+          state: { name, address, email }
+        });
+      } else {
+        setError('Invalid credentials. Use restaurant@gmail.com and password');
+      }
+    } else {
+      if (email === mockCredentials.foodBank.email && 
+          password === mockCredentials.foodBank.password) {
+        navigate('/foodbank-form', {
+          state: { name, address, email }
+        });
+      } else {
+        setError('Invalid credentials. Use foodbank@gmail.com and password');
+      }
+    }
   };
 
   return (
     <div className="min-h-screen bg-white flex justify-center items-center">
-      <div className="w-full max-w-md bg-white p-8 rounded-3xl shadow-lg">
+      <div className="w-full max-w-md bg-white p-8 shadow-lg rounded-b-3xl">
         <div className="mb-8 flex items-center">
           <Leaf className="w-5 h-5 text-green-500 mr-1" />
           <h2 className="text-2xl font-bold">
@@ -47,6 +90,13 @@ const RegistrationPage = () => {
             Food Bank
           </button>
         </div>
+
+        {error && (
+          <div className="mb-4 p-3 text-sm text-red-500 bg-red-50 rounded-lg">
+            {error}
+          </div>
+        )}
+
         <form onSubmit={handleSubmit} className="space-y-4">
           <input
             type="text"

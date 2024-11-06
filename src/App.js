@@ -1,10 +1,11 @@
-// App.js
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import { ShoppingCart, Bell, User, Leaf } from 'lucide-react';
 import './index.css';
 import './App.css';
 import RegistrationPage from './components/RegistrationPage';
+import RestaurantForm from './components/RestaurantForm';
+import FoodBankForm from './components/FoodBankForm';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
@@ -58,9 +59,7 @@ const LoginPage = () => {
         </div>
       </nav>
 
-      
       <div className="max-w-6xl mx-auto px-4 py-12">
-        
         <div className="text-center mb-12">
           <h1 className="text-4xl font-medium leading-relaxed">
             <span className="text-blue-900">"Delicious Meals</span>
@@ -72,9 +71,7 @@ const LoginPage = () => {
           </h1>
         </div>
 
-        
         <div className="grid md:grid-cols-2 gap-8 bg-blue-50 rounded-3xl p-8">
-          
           <div className="relative">
             <div className="grid grid-cols-2 gap-4 mb-4">
               <div className="rounded-3xl overflow-hidden">
@@ -101,7 +98,6 @@ const LoginPage = () => {
             </div>
           </div>
 
-          
           <div className="bg-white p-8 rounded-3xl shadow-lg">
             <div className="mb-8 flex items-center">
               <Leaf className="w-5 h-5 text-green-500 mr-1" />
@@ -164,13 +160,50 @@ const LoginPage = () => {
   );
 };
 
+// Protected Route Component
+const ProtectedRoute = ({ children }) => {
+  const navigate = useNavigate();
+  
+  // Add your authentication check logic here
+  const isAuthenticated = true; // Replace with actual auth check
+  
+  if (!isAuthenticated) {
+    navigate('/');
+    return null;
+  }
+  
+  return children;
+};
 
 const MainApp = () => {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<LoginPage />} />
-        <Route path="/register" element={<RegistrationPage />} />
+        <Route 
+          path="/register" 
+          element={
+            <ProtectedRoute>
+              <RegistrationPage />
+            </ProtectedRoute>
+          } 
+        />
+        <Route 
+          path="/restaurant-form" 
+          element={
+            <ProtectedRoute>
+              <RestaurantForm />
+            </ProtectedRoute>
+          } 
+        />
+        <Route 
+          path="/foodbank-form" 
+          element={
+            <ProtectedRoute>
+              <FoodBankForm />
+            </ProtectedRoute>
+          } 
+        />
       </Routes>
     </Router>
   );
