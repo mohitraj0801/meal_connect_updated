@@ -11,7 +11,7 @@ const RegistrationPage = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
-  // Mock credentials
+  
   const mockCredentials = {
     restaurant: {
       name: 'restaurant',
@@ -29,13 +29,13 @@ const RegistrationPage = () => {
     e.preventDefault();
     setError('');
 
-    // Basic validation
+    
     if (!name || !email || !password || !address) {
       setError('Please fill in all fields');
       return;
     }
 
-    // Mock authentication logic
+    
     if (userType === 'restaurant') {
       if (email === mockCredentials.restaurant.email && 
           password === mockCredentials.restaurant.password) {

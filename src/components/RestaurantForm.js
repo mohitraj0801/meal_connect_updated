@@ -118,7 +118,7 @@ const RestaurantForm = () => {
             </div>
           </div>
 
-          {/* Menu Details */}
+          
           <div className="bg-green-100 p-6 rounded-lg">
             <h2 className="text-xl font-bold mb-4">Menu Details</h2>
             <div className="space-y-4">
@@ -139,7 +139,7 @@ const RestaurantForm = () => {
             </div>
           </div>
 
-          {/* Surplus Food Info */}
+          
           <div className="bg-yellow-100 p-6 rounded-lg">
             <h2 className="text-xl font-bold mb-4">Surplus Food Info</h2>
             <div className="space-y-4">
@@ -167,7 +167,7 @@ const RestaurantForm = () => {
             </div>
           </div>
 
-          {/* Pick Up Scheduling */}
+          
           <div className="bg-blue-100 p-6 rounded-lg">
             <h2 className="text-xl font-bold mb-4">Pick Up Scheduling</h2>
             <div className="space-y-4">

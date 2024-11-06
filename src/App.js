@@ -28,7 +28,7 @@ const LoginPage = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Navigation */}
+      
       <nav className="border-b shadow-sm">
         <div className="max-w-6xl mx-auto px-4 py-3">
           <div className="flex items-center justify-between">
@@ -160,12 +160,12 @@ const LoginPage = () => {
   );
 };
 
-// Protected Route Component
+
 const ProtectedRoute = ({ children }) => {
   const navigate = useNavigate();
   
-  // Add your authentication check logic here
-  const isAuthenticated = true; // Replace with actual auth check
+  
+  const isAuthenticated = true;
   
   if (!isAuthenticated) {
     navigate('/');
