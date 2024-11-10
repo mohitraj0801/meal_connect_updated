@@ -81,7 +81,7 @@ const LoginPage = () => {
             <div className="grid grid-cols-2 gap-4 mb-4">
               <div className="rounded-3xl overflow-hidden">
                 <img
-                  src="/images/volunteersImage.jpg"
+                  src="/images/VolunteersImage.jpg"
                   alt="Volunteers packing food"
                   className="w-full h-full object-cover"
                 />
