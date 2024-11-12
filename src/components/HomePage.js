@@ -134,7 +134,7 @@ const HelpSection = () => (
 
 const FoodHeroes = () => (
   <div className="bg-gray-100 p-8 min-h-[600px]">
-    <div className="min-h-screen bg-[#fafae5]"></div>
+    
     <main className="container mx-auto px-4 py-8">
       <div className="relative">
         <h1 className="text-6xl font-bold text-[#8B4513] text-center mb-20">
