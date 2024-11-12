@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Home, MapPin, ShoppingCart, User, Search, Menu, ChevronLeft, ChevronRight } from 'lucide-react';
+import Button from './ui/buttons';
 
 const Nav = () => (
   <nav className="flex items-center justify-between p-4 bg-white border-b">
@@ -167,11 +168,16 @@ const FoodHeroes = () => (
           Smiles For Those In Need!
         </p>
       </div>
-      <div className="text-center mt-12">
-        <button className="bg-[#8B4513] text-white px-6 py-2 rounded-lg">
-          Become A Food Hero Today
-        </button>
-      </div>
+      <div className="bg-[#FF8C00] text-white py-16 px-4 rounded-lg text-center mt-8">
+          <h2 className="text-5xl font-bold mb-4">Donate Your Surplus</h2>
+          <h3 className="text-4xl mb-8">Food Today</h3>
+          <p className="text-2xl mb-8">Help Us Feed The Hungry And Reduce Waste</p>
+          <Button 
+            className="bg-gray-200 text-white-800 px-8 py-3 rounded-full text-xl hover:bg-gray-300 transition-colors"
+          >
+            Make A Difference
+          </Button>
+        </div>
     </main>
   </div>
 );
@@ -219,7 +225,7 @@ const HomePage = () => {
         {[...Array(totalPages)].map((_, i) => (
           <button
             key={i}
-            className={w-3 h-3 rounded-full ${i === currentPage ? 'bg-green-500' : 'bg-gray-300'}}
+            className={`w-3 h-3 rounded-full ${i === currentPage ? 'bg-green-500' : 'bg-gray-300'}`}
 
             onClick={() => setCurrentPage(i)}
           />
