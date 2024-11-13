@@ -18,7 +18,12 @@ router.post(
     check('email', 'Please include a valid email').isEmail(),
     check('password', 'Please enter a password with 6 or more characters')
       .isLength({ min: 6 }),
-    check('role', 'Role is required').not().isEmpty()
+    check('role', 'Role is required').not().isEmpty(),
+    check('address.street', 'Street is required').not().isEmpty(),
+    check('address.city', 'City is required').not().isEmpty(),
+    check('address.state', 'State is required').not().isEmpty(),
+    check('address.zip', 'Zip code is required').not().isEmpty().isPostalCode()
+
   ],
   async (req, res) => {
     const errors = validationResult(req);
@@ -26,7 +31,7 @@ router.post(
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const { name, email, password, role } = req.body;
+    const { name, email, password, role, address } = req.body;
 
     try {
       // Check if user exists
@@ -40,7 +45,8 @@ router.post(
         name,
         email,
         password,
-        role
+        role,
+        address
       });
 
       // Encrypt password
