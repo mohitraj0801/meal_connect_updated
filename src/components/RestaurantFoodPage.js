@@ -1,15 +1,16 @@
 import React from 'react';
+import { Link } from 'react-router-dom';  // Import Link for navigation
 import { MapPin } from 'lucide-react';
 import { SearchSort } from '../components/common/SearchSort';
 import { Card, CardContent } from '../components/ui/card';
-
+import { Leaf } from 'lucide-react';  // Assuming you're using the Leaf icon
 
 const RestaurantDetails = () => {
   return (
     <div className="grid grid-cols-2 gap-4">
       <div>
         <img 
-          src="/api/placeholder/400/300" 
+          src="/images/12th.jpg" 
           alt="Food"
           className="rounded-lg w-full"
         />
@@ -64,7 +65,7 @@ const MealPlan = () => {
           <Card key={meal}>
             <CardContent className="p-4">
               <img 
-                src="/api/placeholder/200/150" 
+                src="/images/14th.jpg" 
                 alt={meal}
                 className="w-full rounded-lg mb-2"
               />
@@ -79,45 +80,68 @@ const MealPlan = () => {
 
 const RestaurantFoodPage = () => {
   return (
-    <div className="container mx-auto p-4">
-      <div className="flex justify-between items-center mb-4">
-        <span className="text-green-500">Surplus Foods</span>
-        <SearchSort placeholder="Search Restaurants" />
-      </div>
+    <div className="min-h-screen bg-white">
+      {/* Navigation Bar */}
+      <nav className="flex items-center px-6 py-4 bg-white shadow-sm">
+        {/* Logo and Navigation Links */}
+        <div className="flex items-center w-full justify-start space-x-8">
+          <h1 className="text-xl font-bold flex items-center">
+            <Leaf className="h-6 w-6 text-green-500 mr-2" /> {/* Leaf icon before Meal */}
+            <span>Meal</span>
+            <span className="text-green-500">Connect</span> {/* Removed the margin to have no space between Meal and Connect */}
+          </h1>
 
-      <div className="grid grid-cols-3 gap-6">
-        <div className="col-span-2">
-          <h2 className="text-2xl text-green-500 mb-4">Your Restaurant Name</h2>
-          <RestaurantDetails />
-          <MealPlan />
+          {/* Navigation Links */}
+          <div className="flex items-center space-x-8">
+            <Link to="/" className="hover:text-gray-600">Home</Link>
+            <Link to="/Delivery-Page" className="hover:text-gray-600">Delivery</Link>
+            <Link to="/about" className="hover:text-gray-600">About</Link>
+            <Link to="/contact" className="hover:text-gray-600">Contact</Link>
+          </div>
+        </div>
+      </nav>
+
+      {/* Main Content */}
+      <div className="container mx-auto p-4">
+        <div className="flex justify-between items-center mb-4">
+          <span className="text-green-500">Surplus Foods</span>
+          <SearchSort placeholder="Search Restaurants" />
         </div>
 
-        <div>
-          <h3 className="text-xl text-green-500 mb-4">List of Restaurant</h3>
-          <div className="space-y-4">
-            {[1, 2, 3, 4].map((item) => (
-              <Card key={item}>
-                <CardContent className="p-4 flex gap-4">
-                  <img 
-                    src="/api/placeholder/100/100" 
-                    alt="Restaurant"
-                    className="rounded-lg"
-                  />
-                  <div>
-                    <h4 className="font-medium">Name of restaurant</h4>
-                    <div className="flex items-center gap-1 text-sm">
-                      <MapPin className="w-4 h-4" />
-                      <span>Location</span>
+        <div className="grid grid-cols-3 gap-6">
+          <div className="col-span-2">
+            <h2 className="text-2xl text-green-500 mb-4">Your Restaurant Name</h2>
+            <RestaurantDetails />
+            <MealPlan />
+          </div>
+
+          <div>
+            <h3 className="text-xl text-green-500 mb-4">List of Restaurant</h3>
+            <div className="space-y-4">
+              {[1, 2, 3, 4].map((item) => (
+                <Card key={item}>
+                  <CardContent className="p-4 flex gap-4">
+                    <img 
+                      src="/images/13th.jpg" 
+                      alt="Restaurant"
+                      className="w-24 h-24 rounded-lg"
+                    />
+                    <div>
+                      <h4 className="font-medium">Name of restaurant</h4>
+                      <div className="flex items-center gap-1 text-sm">
+                        <MapPin className="w-4 h-4" />
+                        <span>Location</span>
+                      </div>
+                      <div className="flex gap-2 text-sm">
+                        <span>28 Meals</span>
+                        <span>7 Days</span>
+                      </div>
+                      <button className="text-green-500 text-sm">Add Cart</button>
                     </div>
-                    <div className="flex gap-2 text-sm">
-                      <span>28 Meals</span>
-                      <span>7 Days</span>
-                    </div>
-                    <button className="text-green-500 text-sm">Add Cart</button>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
           </div>
         </div>
       </div>
