@@ -1,5 +1,6 @@
 import React from 'react';
-import { ShoppingCart, User, Search, Bell, Leaf } from 'lucide-react'; // Importing the leaf icon
+import { Link } from 'react-router-dom'; // Importing Link for navigation
+import { ShoppingCart, User, Search, Bell, Leaf } from 'lucide-react'; // Importing icons
 
 const DeliveryPage = () => {
   return (
@@ -11,16 +12,16 @@ const DeliveryPage = () => {
           <h1 className="text-xl font-bold flex items-center">
             <Leaf className="h-6 w-6 text-green-500 mr-2" /> {/* Leaf icon before Meal */}
             <span>Meal</span>
-            <span className="text-green-500 ml-1">Connect</span> {/* Connect part in green */}
+            <span className="text-green-500">Connect</span> {/* Removed the margin to have no space between Meal and Connect */}
           </h1>
         </div>
 
         {/* Navigation Links */}
         <div className="flex items-center space-x-8">
-          <a href="/" className="text-gray-700 hover:text-gray-900">Home</a>
-          <a href="/delivery" className="text-green-500 hover:text-green-600">Delivery</a>
-          <a href="/about" className="text-gray-700 hover:text-gray-900">About</a>
-          <a href="/contact" className="text-gray-700 hover:text-gray-900">Contact</a>
+          <Link to="/" className="hover:text-gray-600">Home</Link>
+          <Link to="/Delivery-Page" className="hover:text-gray-600">Delivery</Link>
+          <Link to="/about" className="hover:text-gray-600">About</Link>
+          <Link to="/contact" className="hover:text-gray-600">Contact</Link>
         </div>
 
         {/* Right Icons */}
@@ -54,13 +55,12 @@ const DeliveryPage = () => {
             </div>
 
             <p className="text-gray-800 text-lg mb-6">
-              Restaurant send the information about the SURPLUS FOOD to Food Bank 
-              then Food bank will send their delivery Partner to location to 
-              collect the food.
+              Restaurants send information about the surplus food to the Food Bank, 
+              and the Food Bank will send their delivery partner to collect the food.
             </p>
 
             <div className="bg-[#98c49c] text-black rounded-lg px-8 py-4">
-              <h3 className="text-xl font-medium">More content about the pick up Service</h3>
+              <h3 className="text-xl font-medium">More content about the pickup service</h3>
             </div>
           </div>
         </div>

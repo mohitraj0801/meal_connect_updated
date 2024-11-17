@@ -26,6 +26,8 @@ const RestaurantForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Restaurant form submitted:', formData);
+    navigate('/restaurant-food-page');
+
   };
 
   return (

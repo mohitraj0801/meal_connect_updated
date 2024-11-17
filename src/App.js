@@ -5,6 +5,7 @@ import './index.css';
 import './App.css';
 import RegistrationPage from './components/RegistrationPage';
 import RestaurantForm from './components/RestaurantForm';
+import RestaurantFoodPage from './components/RestaurantFoodPage';
 import FoodBankForm from './components/FoodBankForm';
 import HomePage from './components/HomePage';
 import DeliveryPage from './components/DeliveryPage';
@@ -220,6 +221,14 @@ const MainApp = () => {
           element={
             <ProtectedRoute>
               <DeliveryPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/restaurant-food-page"
+          element={
+            <ProtectedRoute>
+              <RestaurantFoodPage />
             </ProtectedRoute>
           }
         />

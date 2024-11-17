@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Home, MapPin, ShoppingCart, User, Search, Menu, ChevronLeft, ChevronRight } from 'lucide-react';
+import {  MapPin, ShoppingCart, User, Search, Menu, ChevronLeft, ChevronRight } from 'lucide-react';
 import Button from './ui/buttons';
+import { Link } from 'react-router-dom';
+
 
 const Nav = () => (
   <nav className="flex items-center justify-between p-4 bg-white border-b">
@@ -8,10 +10,10 @@ const Nav = () => (
       <span className="text-xl font-bold">Meal<span className="text-green-500">Connect</span></span>
     </div>
     <div className="flex gap-6">
-      <button className="text-green-500">Home</button>
-      <button className="text-gray-600">Delivery</button>
-      <button className="text-gray-600">About</button>
-      <button className="text-gray-600">Contact</button>
+        <Link to="/" className="hover:text-gray-600">Home</Link>
+        <Link to="/Delivery-Page" className="hover:text-gray-600">Delivery</Link>
+        <Link to="/about" className="hover:text-gray-600">About</Link>
+        <Link to="/contact" className="hover:text-gray-600">Contact</Link>
     </div>
     <div className="flex items-center gap-4">
       <div className="flex items-center">
