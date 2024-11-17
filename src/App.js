@@ -10,6 +10,8 @@ import FoodBankForm from './components/FoodBankForm';
 import HomePage from './components/HomePage';
 import DeliveryPage from './components/DeliveryPage';
 import DontWasteFoodPage from './components/DontWasteFoodPage';
+import ContactPage from './components/ContactPage';
+import AboutPage from './components/AboutPage';
 import { Link } from 'react-router-dom';
 
 
@@ -197,6 +199,22 @@ const MainApp = () => {
           element={
             <ProtectedRoute>
               <RestaurantForm />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/contact"
+          element={
+            <ProtectedRoute>
+              <ContactPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/about"
+          element={
+            <ProtectedRoute>
+              <AboutPage />
             </ProtectedRoute>
           }
         />
