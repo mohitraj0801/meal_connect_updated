@@ -7,6 +7,7 @@ import RegistrationPage from './components/RegistrationPage';
 import RestaurantForm from './components/RestaurantForm';
 import FoodBankForm from './components/FoodBankForm';
 import HomePage from './components/HomePage';
+import DeliveryPage from './components/DeliveryPage';
 import DontWasteFoodPage from './components/DontWasteFoodPage';
 import { Link } from 'react-router-dom';
 
@@ -46,7 +47,7 @@ const LoginPage = () => {
               <div className="flex space-x-6">
               <div className="flex space-x-6">
                   <Link to="/home-page" className="hover:text-gray-600">Home</Link>
-                  <Link to="/delivery" className="hover:text-gray-600">Delivery</Link>
+                  <Link to="/Delivery-Page" className="hover:text-gray-600">Delivery</Link>
                   <Link to="/about" className="hover:text-gray-600">About</Link>
                   <Link to="/contact" className="hover:text-gray-600">Contact</Link>
               </div>
@@ -211,6 +212,14 @@ const MainApp = () => {
           element={
             <ProtectedRoute>
               <HomePage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/Delivery-Page"
+          element={
+            <ProtectedRoute>
+              <DeliveryPage />
             </ProtectedRoute>
           }
         />
