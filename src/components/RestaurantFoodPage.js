@@ -4,7 +4,7 @@ import { MapPin } from 'lucide-react';
 import { SearchSort } from '../components/common/SearchSort';
 import { Card, CardContent } from '../components/ui/card';
 import { Leaf } from 'lucide-react';  // Assuming you're using the Leaf icon
-
+import { ShoppingCart, User, Search, Bell } from 'lucide-react';
 const RestaurantDetails = () => {
   return (
     <div className="grid grid-cols-2 gap-4">
@@ -55,29 +55,34 @@ const RestaurantDetails = () => {
 };
 
 const MealPlan = () => {
-  const meals = ['Breakfast', 'Lunch', 'Evening meal', 'Dinner'];
-  
-  return (
-    <div className="mt-8">
-      <h3 className="text-lg mb-4">Your Cart</h3>
-      <div className="grid grid-cols-4 gap-4">
-        {meals.map((meal) => (
-          <Card key={meal}>
-            <CardContent className="p-4">
-              <img 
-                src="/images/14th.jpg" 
-                alt={meal}
-                className="w-full rounded-lg mb-2"
-              />
-              <h4 className="text-sm font-medium">{meal}</h4>
-            </CardContent>
-          </Card>
-        ))}
+    const meals = [
+      { name: 'Breakfast', image: '/images/17th.jpg' },
+      { name: 'Lunch', image: '/images/18th.jpg' },
+      { name: 'Evening meal', image: '/images/14th.jpg' },
+      { name: 'Dinner', image: '/images/15th.jpg' }
+    ];
+    
+    return (
+      <div className="mt-8">
+        <h3 className="text-lg mb-4">Your Cart</h3>
+        <div className="grid grid-cols-4 gap-4">
+          {meals.map((meal) => (
+            <Card key={meal.name}>
+              <CardContent className="p-4">
+                <img 
+                  src={meal.image} 
+                  alt={meal.name}
+                  className="w-32 h-24 object-cover rounded-lg mb-2"
+                />
+                <h4 className="text-sm font-medium">{meal.name}</h4>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
       </div>
-    </div>
-  );
-};
-
+    );
+  };
+  
 const RestaurantFoodPage = () => {
   return (
     <div className="min-h-screen bg-white">
@@ -98,6 +103,18 @@ const RestaurantFoodPage = () => {
             <Link to="/about" className="hover:text-gray-600">About</Link>
             <Link to="/contact" className="hover:text-gray-600">Contact</Link>
           </div>
+        </div>
+     
+      
+        {/* Right Icons */}
+        <div className="flex items-center space-x-6">
+          <div className="flex items-center">
+            <ShoppingCart className="h-5 w-5 text-gray-600" />
+            <span className="ml-2 text-gray-700">Your Cart (0)</span>
+          </div>
+          <User className="h-5 w-5 text-gray-600" />
+          <Search className="h-5 w-5 text-gray-600" />
+          <Bell className="h-5 w-5 text-gray-600" />
         </div>
       </nav>
 
