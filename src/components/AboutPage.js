@@ -93,7 +93,6 @@ const AboutPage = () => {
             <span className="text-green-500">Connect</span> {/* Removed the margin to have no space between Meal and Connect */}
           </h1>
         </div>
-
         {/* Navigation Links */}
         <div className="flex items-center space-x-8">
           <Link to="/" className="hover:text-gray-600">Home</Link>

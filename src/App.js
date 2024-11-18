@@ -12,6 +12,9 @@ import DeliveryPage from './components/DeliveryPage';
 import DontWasteFoodPage from './components/DontWasteFoodPage';
 import ContactPage from './components/ContactPage';
 import AboutPage from './components/AboutPage';
+import AvailableFoodBanks from './components/AvailableFoodBanks';
+import FoodBankDetails from './components/FoodBankDetails';
+import MealConnectApp from './components/MealConnectApp';
 import { Link } from 'react-router-dom';
 
 
@@ -199,6 +202,30 @@ const MainApp = () => {
           element={
             <ProtectedRoute>
               <RestaurantForm />
+            </ProtectedRoute>
+          }
+        />
+         <Route
+          path="/meal-connect-app"
+          element={
+            <ProtectedRoute>
+              <MealConnectApp />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/food-bank-details"
+          element={
+            <ProtectedRoute>
+              <FoodBankDetails />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/available-food-banks"
+          element={
+            <ProtectedRoute>
+              <AvailableFoodBanks />
             </ProtectedRoute>
           }
         />
