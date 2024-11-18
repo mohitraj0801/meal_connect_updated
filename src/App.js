@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
-import { ShoppingCart, Bell, User, Leaf } from 'lucide-react';
+import { ShoppingCart, Bell, User, Leaf, Import } from 'lucide-react';
 import './index.css';
 import './App.css';
 import RegistrationPage from './components/RegistrationPage';
@@ -16,7 +16,11 @@ import AvailableFoodBanks from './components/AvailableFoodBanks';
 import FoodBankDetails from './components/FoodBankDetails';
 import MealConnectApp from './components/MealConnectApp';
 import OrderConfirmation from './components/OrderConfirmation';
+import FoodBankDashboard from './components/FoodBankDashboard';
+import RestaurantDashboard from './components/RestaurantDashboard';
+import MealConnectDashboard from './components/MealConnectDashboard';
 import { Link } from 'react-router-dom';
+
 
 
 const LoginPage = () => {
@@ -214,6 +218,7 @@ const MainApp = () => {
             </ProtectedRoute>
           }
         />
+        
          <Route
           path="/meal-connect-app"
           element={
@@ -227,6 +232,30 @@ const MainApp = () => {
           element={
             <ProtectedRoute>
               <FoodBankDetails />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/food-bank-dashboard"
+          element={
+            <ProtectedRoute>
+              <FoodBankDashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/restaurant-dashboard"
+          element={
+            <ProtectedRoute>
+              <RestaurantDashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/meal-connect-dashboard"
+          element={
+            <ProtectedRoute>
+              <MealConnectDashboard />
             </ProtectedRoute>
           }
         />

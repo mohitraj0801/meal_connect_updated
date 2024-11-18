@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom'; // Import useNavigate
 import { MapPin, Leaf, ShoppingCart, User, Search, Bell, Menu } from 'lucide-react';
 import { SearchSort } from '../components/common/SearchSort';
 import { Card, CardContent } from '../components/ui/card';
@@ -73,23 +73,21 @@ const MealPlan = () => {
           </Card>
         ))}
       </div>
-
-      {/* Order Button with Cart Icon */}
-      <div className="fixed bottom-8 right-8 bg-green-500 text-white p-4 rounded-full shadow-lg flex items-center justify-center space-x-2 cursor-pointer">
-        <ShoppingCart className="h-6 w-6" />
-        <span>Order</span>
-      </div>
     </div>
   );
 };
 
-  
-
 const RestaurantFoodPage = () => {
   const [menuOpen, setMenuOpen] = useState(false); // State for dropdown menu
+  const navigate = useNavigate(); // Initialize useNavigate hook
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
+  };
+
+  // Handle order button click to navigate to the order confirmation page
+  const handleOrderClick = () => {
+    navigate('/order-confirmation'); // Navigate to order confirmation page
   };
 
   return (
@@ -185,6 +183,15 @@ const RestaurantFoodPage = () => {
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Order Button with Cart Icon */}
+      <div 
+        className="fixed bottom-8 right-8 bg-green-500 text-white p-4 rounded-full shadow-lg flex items-center cursor-pointer"
+        onClick={handleOrderClick} // Trigger navigation
+      >
+        <ShoppingCart className="w-6 h-6 mr-2" />
+        <span>Order Now</span>
       </div>
     </div>
   );

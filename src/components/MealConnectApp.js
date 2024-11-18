@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import { Menu, ChevronDown } from 'lucide-react';
+import { Menu, ChevronDown, ShoppingCart, User, Search, Bell, Leaf } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const MealConnectApp = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [currentPage, setCurrentPage] = useState('date-wise');
   const [showDashboardSubmenu, setShowDashboardSubmenu] = useState(true);
+  const [showRestaurantSubmenu, setShowRestaurantSubmenu] = useState(false);
+  const [showFoodBankSubmenu, setShowFoodBankSubmenu] = useState(false);
 
   // Navigation items with submenu
   const dashboardItems = [
@@ -19,7 +21,7 @@ const MealConnectApp = () => {
 
   const renderCurrentPage = () => {
     switch (currentPage) {
-      case 'date-wise':
+    case 'date-wise':
         return (
           <div className="p-6">
             <h2 className="text-xl font-medium mb-6">Date Wise Donation Tracking</h2>
@@ -115,7 +117,7 @@ const MealConnectApp = () => {
                     <th className="p-4 text-left border-r">Items</th>
                     <th className="p-4 text-left">Total Quantity</th>
                   </tr>
-                </thead>
+                  </thead>
                 <tbody>
                   <tr>
                     <td className="p-4 border-r"></td>
@@ -183,7 +185,6 @@ const MealConnectApp = () => {
         return null;
     }
   };
-
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
@@ -193,30 +194,25 @@ const MealConnectApp = () => {
             <Menu className="h-6 w-6" />
           </button>
           <div className="flex items-center">
+            <Leaf className="text-green-500 h-6 w-6" />
             <span className="font-semibold text-black">Meal</span>
-            <span className="font-semibold text-teal-600">Connect</span>
+            <span className="font-semibold text-green-500">Connect</span>
           </div>
         </div>
-        <nav className="flex items-center gap-6">
-        <Link to="/" className="hover:text-gray-600">Home</Link>
+        {/* Left Section: Navigation Links */}
+        <nav className="flex items-center gap-6 ml-4">
+          <Link to="/" className="hover:text-gray-600">Home</Link>
           <Link to="/Delivery-Page" className="hover:text-gray-600">Delivery</Link>
           <Link to="/about" className="hover:text-gray-600">About</Link>
           <Link to="/contact" className="hover:text-gray-600">Contact</Link>
         </nav>
-        <div className="flex items-center gap-4">
-          <div className="flex items-center gap-2">
-            <span>Your Cart (0)</span>
-          </div>
-          <button className="p-2 rounded-full hover:bg-teal-400">
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-            </svg>
-          </button>
-          <button className="p-2 rounded-full hover:bg-teal-400">
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
-            </svg>
-          </button>
+        {/* Right Section: Icons */}
+        <div className="flex items-center gap-6">
+          <ShoppingCart className="h-6 w-6 text-gray-600" />
+          <User className="h-6 w-6 text-gray-600" />
+          <Search className="h-6 w-6 text-gray-600" />
+          <Bell className="h-6 w-6 text-gray-600" />
+          
         </div>
       </header>
 
@@ -249,16 +245,42 @@ const MealConnectApp = () => {
                   </div>
                 )}
               </div>
+
               {/* Restaurant */}
-              <button className="flex items-center justify-between w-full p-2 text-left hover:bg-gray-200 rounded">
-                <span className="font-medium">Restaurant</span>
-                <ChevronDown className="h-4 w-4" />
-              </button>
+              <div>
+                <button
+                  onClick={() => setShowRestaurantSubmenu(!showRestaurantSubmenu)}
+                  className="flex items-center justify-between w-full p-2 text-left hover:bg-gray-200 rounded"
+                >
+                  <span className="font-medium">Restaurant</span>
+                  <ChevronDown className={`h-4 w-4 transform transition-transform ${showRestaurantSubmenu ? 'rotate-180' : ''}`} />
+                </button>
+                {showRestaurantSubmenu && (
+                  <div className="ml-4 space-y-1">
+                    <Link to="/restaurant-dashboard" className="w-full p-2 text-left text-sm hover:bg-gray-200 rounded block">
+                      Dashboard
+                    </Link>
+                  </div>
+                )}
+              </div>
+
               {/* Food Banks */}
-              <button className="flex items-center justify-between w-full p-2 text-left hover:bg-gray-200 rounded">
-                <span className="font-medium">Food Banks</span>
-                <ChevronDown className="h-4 w-4" />
-              </button>
+              <div>
+                <button
+                  onClick={() => setShowFoodBankSubmenu(!showFoodBankSubmenu)}
+                  className="flex items-center justify-between w-full p-2 text-left hover:bg-gray-200 rounded"
+                >
+                  <span className="font-medium">Food Banks</span>
+                  <ChevronDown className={`h-4 w-4 transform transition-transform ${showFoodBankSubmenu ? 'rotate-180' : ''}`} />
+                </button>
+                {showFoodBankSubmenu && (
+                  <div className="ml-4 space-y-1">
+                    <Link to="/food-bank-dashboard" className="w-full p-2 text-left text-sm hover:bg-gray-200 rounded block">
+                      Dashboard
+                    </Link>
+                  </div>
+                )}
+              </div>
             </div>
           </nav>
         </aside>
@@ -273,3 +295,6 @@ const MealConnectApp = () => {
 };
 
 export default MealConnectApp;
+
+
+
