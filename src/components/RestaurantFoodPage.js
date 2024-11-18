@@ -55,6 +55,7 @@ const MealPlan = () => {
     { name: 'Evening meal', image: '/images/14th.jpg' },
     { name: 'Dinner', image: '/images/15th.jpg' }
   ];
+  
   return (
     <div className="mt-8">
       <h3 className="text-lg mb-4">Your Cart</h3>
@@ -72,9 +73,17 @@ const MealPlan = () => {
           </Card>
         ))}
       </div>
+
+      {/* Order Button with Cart Icon */}
+      <div className="fixed bottom-8 right-8 bg-green-500 text-white p-4 rounded-full shadow-lg flex items-center justify-center space-x-2 cursor-pointer">
+        <ShoppingCart className="h-6 w-6" />
+        <span>Order</span>
+      </div>
     </div>
   );
 };
+
+  
 
 const RestaurantFoodPage = () => {
   const [menuOpen, setMenuOpen] = useState(false); // State for dropdown menu

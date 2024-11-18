@@ -15,6 +15,7 @@ import AboutPage from './components/AboutPage';
 import AvailableFoodBanks from './components/AvailableFoodBanks';
 import FoodBankDetails from './components/FoodBankDetails';
 import MealConnectApp from './components/MealConnectApp';
+import OrderConfirmation from './components/OrderConfirmation';
 import { Link } from 'react-router-dom';
 
 
@@ -202,6 +203,14 @@ const MainApp = () => {
           element={
             <ProtectedRoute>
               <RestaurantForm />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/order-confirmation"
+          element={
+            <ProtectedRoute>
+              <OrderConfirmation />
             </ProtectedRoute>
           }
         />
