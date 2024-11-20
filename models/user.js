@@ -18,24 +18,24 @@ const UserSchema = new mongoose.Schema({
   role: {
     type: String,
     enum: ['restaurant', 'foodbank', 'admin'],
-    required: true
+    //required: true
   },
   address: {
     street: {
       type: String,
-      required: true
+      //  required: true
     },
     city: {
       type: String,
-      required: true
+      //  required: true
     },
     state: {
       type: String,
-      required: true
+      //  required: true
     },
     zip: {
       type: String,
-      required: true
+      // required: true
     }
   },
   createdAt: {
