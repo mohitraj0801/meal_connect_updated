@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import { ShoppingCart, Bell, User, Leaf, Import } from 'lucide-react';
 import './index.css';
@@ -29,16 +29,28 @@ const LoginPage = () => {
   const [rememberMe, setRememberMe] = useState(false);
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
-    e.preventDefault();
-    
-    const mockEmail = 'user@gmail.com';
-    const mockPassword = 'password';
+  const handleLogin = async (e) => {
+    e.preventDefault(); // Prevent the default form submission
 
-    if (email === mockEmail && password === mockPassword) {
-      navigate('/register'); 
+    const response = await fetch("http://localhost:5002/api/auth/login", { // Adjust the endpoint as necessary
+      method: "POST", // Use POST for login
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, password }),
+    });
+
+    console.log(response);
+
+
+    if (response.ok) {
+      const data = await response.json();
+      // Handle successful login (e.g., save token, redirect user)
+      console.log(data);
+      navigate('/restaurant-form'); // Navigate to home page on successful login
     } else {
-      alert('Invalid credentials. Please try again.');
+      // Handle error (e.g., display error message)
+      console.error("Login failed");
     }
   };
 
@@ -56,12 +68,12 @@ const LoginPage = () => {
                 </span>
               </div>
               <div className="flex space-x-6">
-              <div className="flex space-x-6">
+                <div className="flex space-x-6">
                   <Link to="/home-page" className="hover:text-gray-600">Home</Link>
                   <Link to="/Delivery-Page" className="hover:text-gray-600">Delivery</Link>
                   <Link to="/about" className="hover:text-gray-600">About</Link>
                   <Link to="/contact" className="hover:text-gray-600">Contact</Link>
-              </div>
+                </div>
               </div>
             </div>
             <div className="flex items-center space-x-6">
@@ -164,9 +176,9 @@ const LoginPage = () => {
               </button>
               <div className="text-center text-sm">
                 <span className="text-gray-600">Don't have an account? </span>
-                <a href="#" className="text-blue-600 hover:underline">
+                <Link to="/register" className="text-blue-600 hover:underline">
                   Create an account
-                </a>
+                </Link>
               </div>
             </form>
           </div>
@@ -218,8 +230,8 @@ const MainApp = () => {
             </ProtectedRoute>
           }
         />
-        
-         <Route
+
+        <Route
           path="/meal-connect-app"
           element={
             <ProtectedRoute>

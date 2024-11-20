@@ -11,51 +11,55 @@ const RegistrationPage = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
-  
-  const mockCredentials = {
-    restaurant: {
-      name: 'restaurant',
-      email: 'restaurant@gmail.com',
-      password: 'password'
-    },
-    foodBank: {
-      name: 'foodbank',
-      email: 'foodbank@gmail.com',
-      password: 'password'
-    }
-  };
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
 
-    
+    // Validate fields
     if (!name || !email || !password || !address) {
       setError('Please fill in all fields');
       return;
     }
 
-    
-    if (userType === 'restaurant') {
-      if (email === mockCredentials.restaurant.email && 
-          password === mockCredentials.restaurant.password) {
-        navigate('/restaurant-form', { 
-          state: { name, address, email }
-        });
-      } else {
-        setError('Invalid credentials. Use restaurant@gmail.com and password');
+    // Prepare the registration data
+    const registrationData = {
+      name,
+      email,
+      password,
+      role: userType, // Assuming role is determined by userType
+      address: {
+        street: address, // Assuming address is a single string; adjust as needed
+        city: '', // You can add more fields for address if needed
+        state: '',
+        zip: ''
       }
-    } else {
-      if (email === mockCredentials.foodBank.email && 
-          password === mockCredentials.foodBank.password) {
-        navigate('/foodbank-form', {
-          state: { name, address, email }
-        });
-      } else {
-        setError('Invalid credentials. Use foodbank@gmail.com and password');
-      }
+    };
+
+    try {
+      const response = await fetch("http://localhost:5002/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(registrationData),
+      });
+
+      // if (!response.ok) {
+      //   const errorData = await response.json();
+      //   setError(errorData.errors ? errorData.errors.map(err => err.msg).join(', ') : 'Registration failed');
+      //   return;
+      // }
+
+      // const data = await response.json();
+      // Handle successful registration (e.g., save token, redirect user)
+      // console.log(data);
+      navigate('/home-page'); // Navigate to home page or another page on successful registration
+    } catch (error) {
+      console.error("Registration failed:", error);
+      setError('Registration failed. Please try again.');
     }
   };
+
 
   return (
     <div className="min-h-screen bg-white flex justify-center items-center">
@@ -70,21 +74,19 @@ const RegistrationPage = () => {
         <h1 className="text-3xl font-medium mb-6">Register Now As</h1>
         <div className="flex justify-center space-x-4 mb-8">
           <button
-            className={`px-6 py-2 rounded-full transition-colors ${
-              userType === 'restaurant'
-                ? 'bg-blue-900 text-white hover:bg-blue-800'
-                : 'bg-gray-200 text-gray-600 hover:bg-gray-300'
-            }`}
+            className={`px-6 py-2 rounded-full transition-colors ${userType === 'restaurant'
+              ? 'bg-blue-900 text-white hover:bg-blue-800'
+              : 'bg-gray-200 text-gray-600 hover:bg-gray-300'
+              }`}
             onClick={() => setUserType('restaurant')}
           >
             Restaurant
           </button>
           <button
-            className={`px-6 py-2 rounded-full transition-colors ${
-              userType === 'foodBank'
-                ? 'bg-blue-900 text-white hover:bg-blue-800'
-                : 'bg-gray-200 text-gray-600 hover:bg-gray-300'
-            }`}
+            className={`px-6 py-2 rounded-full transition-colors ${userType === 'foodBank'
+              ? 'bg-blue-900 text-white hover:bg-blue-800'
+              : 'bg-gray-200 text-gray-600 hover:bg-gray-300'
+              }`}
             onClick={() => setUserType('foodBank')}
           >
             Food Bank
